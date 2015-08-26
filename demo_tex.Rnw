@@ -1,0 +1,103 @@
+\documentclass[a4paper, 12pt]{scrartcl}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[ngerman]{babel}
+
+\usepackage{graphicx}
+\usepackage{longtable}
+\usepackage[export]{adjustbox} % valign
+\usepackage{tabularx}
+\usepackage{array}
+\usepackage{fancyhdr} % header and footer
+\usepackage{ellipsis}
+\usepackage{geometry}
+\usepackage{MnSymbol}
+\usepackage{verbatim}
+\usepackage{ulem}
+\usepackage{showframe} % Anzeigen des Seitenlayouts
+
+
+\graphicspath{ {./plots/} }
+%% \newcommands %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% Neue Comandos um die Spaltenbreiten der longtables global zu streuern
+% usage :
+% \begin{longtable}{ m{0.04\textwidth} m{0.45\textwidth}  m{0.1\textwidth}  m{0.36\textwidth} }
+% \begin{longtable}{ m{\colwidthI} m{\colwidthII}  m{\colwidthIII}  m{\colwidthIIII} }
+
+
+\newcommand{\colwidthI   }{0.10\textwidth}
+\newcommand{\colwidthII  }{0.20\textwidth}
+\newcommand{\colwidthIII }{0.20\textwidth}
+\newcommand{\colwidthIIII}{0.50\textwidth}
+
+% Neues Command für includegraphics um die plots alle einheitlich einzubinden
+% breite: würde ausgemessen an den alten evaluationen
+% höhe: maximal 14 grafiken pro seite
+% usage:
+% \includeplot{plot}
+\newcommand{\includeplot}[1]{
+  \includegraphics[width=\colwidthIIII, height=0.07\textheight , keepaspectratio=true]{#1}
+}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{document} %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{longtable}{ m{\colwidthI} m{\colwidthII}  m{\colwidthIII}  m{\colwidthIIII} }
+%% HEAD %%%%%%%%%
+% 
+%   \hline
+%   \endfirsthead
+% 
+%   \hline
+%   \endhead
+% 
+%% FOOT %%%%%%%%%
+% 
+%   \hline
+%   & & \multicolumn{1}{r}{\scriptsize{(1: stimme gar nicht zu -- 5: stimme voll und ganz zu)}} \\
+%   \endfoot
+% 
+%   \hline
+%   & & \multicolumn{1}{r}{\scriptsize{(1: stimme gar nicht zu -- 5: stimme voll und ganz zu)}} \\
+%   \endlastfoot
+
+
+%% CONTENT %%%%%%%%
+  body-wt     &  MW: \Sexpr{mean(msleep$bodywt)}      & SD: \Sexpr{sd(msleep$bodywt)}      & \includeplot{plotbod}\\
+  sleep-rem   &  MW: \Sexpr{mean(msleep$sleep_rem)}   & SD: \Sexpr{sd(msleep$sleep_rem)}   & \includeplot{plotrem}\\
+  sleep-total &  MW: \Sexpr{mean(msleep$sleep_total)} & SD: \Sexpr{sd(msleep$sleep_total)} & \includeplot{plottot}\\
+
+\end{longtable}
+
+\begin{longtable}{ m{\colwidthI} m{\colwidthII}  m{\colwidthIII}  m{\colwidthIIII} }
+% HEAD %%%%%%%%%
+
+  \hline
+  \endfirsthead
+
+  \hline
+  \endhead
+
+% FOOT %%%%%%%%%
+
+  \hline
+  & & \multicolumn{1}{r}{\scriptsize{(1: stimme gar nicht zu -- 5: stimme voll und ganz zu)}} \\
+  \endfoot
+
+  \hline
+  & & \multicolumn{1}{r}{\scriptsize{(1: stimme gar nicht zu -- 5: stimme voll und ganz zu)}} \\
+  \endlastfoot
+
+
+%% CONTENT %%%%%%%%
+  body-wt     &  MW: \Sexpr{mean(msleep$bodywt)}      & SD: \Sexpr{sd(msleep$bodywt)}      & \includeplot{plotbod}\\
+  sleep-rem   &  MW: \Sexpr{mean(msleep$sleep_rem)}   & SD: \Sexpr{sd(msleep$sleep_rem)}   & \includeplot{plotrem}\\
+  sleep-total &  MW: \Sexpr{mean(msleep$sleep_total)} & SD: \Sexpr{sd(msleep$sleep_total)} & \includeplot{plottot}\\
+
+\end{longtable}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\end{document}%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

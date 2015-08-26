@@ -1,0 +1,153 @@
+\documentclass[a4paper, 12pt]{scrartcl}\usepackage[]{graphicx}\usepackage[]{color}
+%% maxwidth is the original width if it is less than linewidth
+%% otherwise use linewidth (to make sure the graphics do not exceed the margin)
+\makeatletter
+\def\maxwidth{ %
+  \ifdim\Gin@nat@width>\linewidth
+    \linewidth
+  \else
+    \Gin@nat@width
+  \fi
+}
+\makeatother
+
+\definecolor{fgcolor}{rgb}{0.345, 0.345, 0.345}
+\newcommand{\hlnum}[1]{\textcolor[rgb]{0.686,0.059,0.569}{#1}}%
+\newcommand{\hlstr}[1]{\textcolor[rgb]{0.192,0.494,0.8}{#1}}%
+\newcommand{\hlcom}[1]{\textcolor[rgb]{0.678,0.584,0.686}{\textit{#1}}}%
+\newcommand{\hlopt}[1]{\textcolor[rgb]{0,0,0}{#1}}%
+\newcommand{\hlstd}[1]{\textcolor[rgb]{0.345,0.345,0.345}{#1}}%
+\newcommand{\hlkwa}[1]{\textcolor[rgb]{0.161,0.373,0.58}{\textbf{#1}}}%
+\newcommand{\hlkwb}[1]{\textcolor[rgb]{0.69,0.353,0.396}{#1}}%
+\newcommand{\hlkwc}[1]{\textcolor[rgb]{0.333,0.667,0.333}{#1}}%
+\newcommand{\hlkwd}[1]{\textcolor[rgb]{0.737,0.353,0.396}{\textbf{#1}}}%
+
+\usepackage{framed}
+\makeatletter
+\newenvironment{kframe}{%
+ \def\at@end@of@kframe{}%
+ \ifinner\ifhmode%
+  \def\at@end@of@kframe{\end{minipage}}%
+  \begin{minipage}{\columnwidth}%
+ \fi\fi%
+ \def\FrameCommand##1{\hskip\@totalleftmargin \hskip-\fboxsep
+ \colorbox{shadecolor}{##1}\hskip-\fboxsep
+     % There is no \\@totalrightmargin, so:
+     \hskip-\linewidth \hskip-\@totalleftmargin \hskip\columnwidth}%
+ \MakeFramed {\advance\hsize-\width
+   \@totalleftmargin\z@ \linewidth\hsize
+   \@setminipage}}%
+ {\par\unskip\endMakeFramed%
+ \at@end@of@kframe}
+\makeatother
+
+\definecolor{shadecolor}{rgb}{.97, .97, .97}
+\definecolor{messagecolor}{rgb}{0, 0, 0}
+\definecolor{warningcolor}{rgb}{1, 0, 1}
+\definecolor{errorcolor}{rgb}{1, 0, 0}
+\newenvironment{knitrout}{}{} % an empty environment to be redefined in TeX
+
+\usepackage{alltt}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[ngerman]{babel}
+
+\usepackage{graphicx}
+\usepackage{longtable}
+\usepackage[export]{adjustbox} % valign
+\usepackage{tabularx}
+\usepackage{array}
+\usepackage{fancyhdr} % header and footer
+\usepackage{ellipsis}
+\usepackage{geometry}
+\usepackage{MnSymbol}
+\usepackage{verbatim}
+\usepackage{ulem}
+\usepackage{showframe} % Anzeigen des Seitenlayouts
+
+
+\graphicspath{ {./plots/} }
+%% \newcommands %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% Neue Comandos um die Spaltenbreiten der longtables global zu streuern
+% usage :
+% \begin{longtable}{ m{0.04\textwidth} m{0.45\textwidth}  m{0.1\textwidth}  m{0.36\textwidth} }
+% \begin{longtable}{ m{\colwidthI} m{\colwidthII}  m{\colwidthIII}  m{\colwidthIIII} }
+
+
+\newcommand{\colwidthI   }{0.10\textwidth}
+\newcommand{\colwidthII  }{0.20\textwidth}
+\newcommand{\colwidthIII }{0.20\textwidth}
+\newcommand{\colwidthIIII}{0.50\textwidth}
+
+% Neues Command für includegraphics um die plots alle einheitlich einzubinden
+% breite: würde ausgemessen an den alten evaluationen
+% höhe: maximal 14 grafiken pro seite
+% usage:
+% \includeplot{plot}
+\newcommand{\includeplot}[1]{
+  \includegraphics[width=\colwidthIIII, height=0.07\textheight , keepaspectratio=true]{#1}
+}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\begin{document} %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{longtable}{ m{\colwidthI} m{\colwidthII}  m{\colwidthIII}  m{\colwidthIIII} }
+%% HEAD %%%%%%%%%
+% 
+%   \hline
+%   \endfirsthead
+% 
+%   \hline
+%   \endhead
+% 
+%% FOOT %%%%%%%%%
+% 
+%   \hline
+%   & & \multicolumn{1}{r}{\scriptsize{(1: stimme gar nicht zu -- 5: stimme voll und ganz zu)}} \\
+%   \endfoot
+% 
+%   \hline
+%   & & \multicolumn{1}{r}{\scriptsize{(1: stimme gar nicht zu -- 5: stimme voll und ganz zu)}} \\
+%   \endlastfoot
+
+
+%% CONTENT %%%%%%%%
+  body-wt     &  MW: 166.1363494      & SD: 786.8397316      & \includeplot{plotbod}\\
+  sleep-rem   &  MW: NA   & SD: NA   & \includeplot{plotrem}\\
+  sleep-total &  MW: 10.4337349 & SD: 4.450357 & \includeplot{plottot}\\
+
+\end{longtable}
+
+\begin{longtable}{ m{\colwidthI} m{\colwidthII}  m{\colwidthIII}  m{\colwidthIIII} }
+% HEAD %%%%%%%%%
+
+  \hline
+  \endfirsthead
+
+  \hline
+  \endhead
+
+% FOOT %%%%%%%%%
+
+  \hline
+  & & \multicolumn{1}{r}{\scriptsize{(1: stimme gar nicht zu -- 5: stimme voll und ganz zu)}} \\
+  \endfoot
+
+  \hline
+  & & \multicolumn{1}{r}{\scriptsize{(1: stimme gar nicht zu -- 5: stimme voll und ganz zu)}} \\
+  \endlastfoot
+
+
+%% CONTENT %%%%%%%%
+  body-wt     &  MW: 166.1363494      & SD: 786.8397316      & \includeplot{plotbod}\\
+  sleep-rem   &  MW: NA   & SD: NA   & \includeplot{plotrem}\\
+  sleep-total &  MW: 10.4337349 & SD: 4.450357 & \includeplot{plottot}\\
+
+\end{longtable}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\end{document}%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
